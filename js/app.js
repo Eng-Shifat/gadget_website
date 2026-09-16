@@ -180,7 +180,7 @@ function renderCategoryNav() {
       <li class="cat-chip">
         <button class="cat-chip-btn${on ? " active" : ""}" onclick="toggleCategory('${c.id}')">
           <span class="cat-chip-label">${c.label}</span>
-          <img src="${c.img}" alt="" class="cat-chip-img" />
+          <img src="${c.img}" alt="${c.label}" class="cat-chip-img" />
         </button>
       </li>`;
   }).join("");

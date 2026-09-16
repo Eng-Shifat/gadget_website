@@ -133,32 +133,33 @@ a      { text-decoration: none; color: inherit; }
 ═══════════════════════════════ */
 .cat-nav {
   background: var(--paper);
-  padding: 16px 0 20px;
-  overflow: visible;
+  padding: 12px 0;
+  overflow: hidden;
   border-bottom: 1px solid var(--line);
 }
 .cat-nav-inner {
   max-width: 100%;
   margin: 0;
-  padding: 0 24px;
+  padding: 0 16px;
   display: flex;
-  align-items: flex-end;
-  gap: 0;
-  overflow: visible;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
+.cat-nav-inner::-webkit-scrollbar { display: none; }
 
-/* "Categories" striped card — restored */
+/* "Categories" label box */
 .cat-stripe-wrap {
   position: relative;
   flex-shrink: 0;
-  width: 130px;
-  height: 70px;
-  border-radius: 8px;
+  padding: 6px 12px;
+  border-radius: 6px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 16px;
+  height: 36px;
 }
 .cat-stripe-bg {
   display: block;
@@ -173,7 +174,7 @@ a      { text-decoration: none; color: inherit; }
 .cat-stripe-text {
   position: relative;
   z-index: 1;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   font-style: italic;
   color: var(--paper);
@@ -181,82 +182,79 @@ a      { text-decoration: none; color: inherit; }
   white-space: nowrap;
 }
 
-/* Category list — full width, evenly spaced */
+/* Category list — full width */
 .cat-list {
   flex: 1;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
-  gap: 0;
+  gap: 6px;
   flex-wrap: nowrap;
-  overflow: visible;
-  padding-bottom: 0;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
-/* Individual chip — each takes equal space */
+/* Individual chip — grows to fill available space */
 .cat-chip {
   flex: 1;
   display: flex;
   justify-content: center;
-  min-width: 0;
 }
 
-/* The button */
+/* The button — flat inline row: text left, image right, full width */
 .cat-chip-btn {
-  position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: flex-end;
-  height: 80px;
-  padding: 0;
-  background: none;
-  border: none;
-  cursor: pointer;
+  justify-content: space-between;
+  gap: 6px;
+  height: 36px;
   width: 100%;
-  max-width: 160px;
-}
-
-/* Product image — centered above chip, overflows upward */
-.cat-chip-img {
-  position: relative;
-  z-index: 3;
-  width: 68px;
-  height: 68px;
-  object-fit: contain;
-  pointer-events: none;
-  margin-bottom: -12px;
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,.18));
-  transition: transform .18s ease;
-}
-.cat-chip-btn:hover .cat-chip-img {
-  transform: translateY(-3px);
-}
-
-/* White label chip — full width of button, centered */
-.cat-chip-label {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  height: 38px;
-  padding: 0 12px;
+  padding: 0 8px 0 12px;
   background: var(--paper);
   border: 1.5px solid var(--line);
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--ink);
+  border-radius: 6px;
+  cursor: pointer;
   white-space: nowrap;
   box-shadow: 0 1px 3px rgba(0,0,0,.07);
   transition: border-color .15s, box-shadow .15s;
 }
-.cat-chip-btn:hover .cat-chip-label,
-.cat-chip-btn.active .cat-chip-label {
+.cat-chip-btn:hover,
+.cat-chip-btn.active {
   border-color: var(--brand);
   box-shadow: 0 0 0 2px rgba(47,111,237,.18);
+}
+
+/* Product image — inline, right side of chip */
+.cat-chip-img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,.15));
+  transition: transform .18s ease;
+  flex-shrink: 0;
+}
+.cat-chip-btn:hover .cat-chip-img {
+  transform: scale(1.08);
+}
+
+/* Label text — left side of chip, always left-aligned */
+.cat-chip-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+  background: none;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  height: auto;
+  flex: 1;
+  text-align: left;
+  display: block;
+  border-radius: 0;
 }
 
 /* ══════════════════════════════
@@ -264,7 +262,7 @@ a      { text-decoration: none; color: inherit; }
 ═══════════════════════════════ */
 .hero-section {
   max-width: 1400px;
-  margin: 0 auto;
+  margin: 5px auto 0;
   padding: 0 24px 32px;
 }
 
