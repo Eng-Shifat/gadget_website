@@ -492,14 +492,17 @@ a      { text-decoration: none; color: inherit; }
 .grid-card-btn img { height: 100%; width: 100%; object-fit: contain; }
 .grid-card-cap { margin-top: 6px; padding: 0 2px; font-size: 11px; line-height: 1.4; color: var(--soft); overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 
-/* Override grid gap for related/tv rows — Figma gap=45, padding-top=52 */
+/* Per-row grid gaps — matched to Figma spacing */
 #row-a-grid,
 #row-tv-grid,
 #row-phones-grid,
 #row-cables-grid {
-  gap: 45px;
   padding-top: 52px;
 }
+#row-a-grid      { gap: 30px; } /* Your Releated items.. — Figma spacing 30 */
+#row-tv-grid     { gap: 0; }    /* Televisons — Figma spacing -2 (~0) */
+#row-phones-grid { gap: 35px; } /* Headphones — Figma spacing 35 */
+#row-cables-grid { gap: 14px; } /* Accessories — Figma spacing 14 */
 
 /* Brand panels row — Shop by Brands */
 .brands-row {
@@ -511,7 +514,7 @@ a      { text-decoration: none; color: inherit; }
 @media (min-width: 768px) {
   .brands-row {
     grid-template-columns: repeat(4, 1fr);
-    gap: 48px;
+    gap: 27px; /* Figma spacing 27 */
   }
 }
 
@@ -619,6 +622,18 @@ a      { text-decoration: none; color: inherit; }
   border-radius: 4px;
 }
 
+/* AirPods image: portrait source (408×612) — don't stretch to fill the
+   whole box, or cover crops off the bun/shoulders. Instead, pin it to
+   the right at its natural aspect ratio (height = box height, width
+   auto) so the full photo shows, matching the Figma layer (W310 H383). */
+.promo-airpods .promo-img {
+  left: auto;
+  right: 0;
+  width: auto;
+  height: 100%;
+  object-fit: cover;
+}
+
 .promo-content {
   position: absolute;
   inset: 0;
@@ -641,36 +656,38 @@ a      { text-decoration: none; color: inherit; }
 @media (max-width: 767px) { .promo-text-group { width: 100%; padding: 16px; } }
 
 .promo-title {
-  font-family: var(--font);
-  font-size: 28px;
-  font-weight: 700;
+  font-family: 'Poppins', var(--font);
+  font-size: 32px;
+  font-weight: 600; /* SemiBold — Figma spec */
   color: #ffffff;
   line-height: 1.1;
   margin: 0;
 }
 
 .promo-title-light {
-  font-size: 32px;
+  font-family: 'Poppins', var(--font);
+  font-size: 48px; /* Figma spec */
   font-weight: 400;
   color: #ffffff;
+  line-height: 1.1;
 }
 
 .promo-title-light strong { font-weight: 700; }
 
 .promo-sub {
-  font-family: var(--font);
-  font-size: 14px;
+  font-family: 'Poppins', var(--font);
+  font-size: 16px;
   color: #cccccc;
   font-weight: 400;
   line-height: 1.5;
   margin: 0;
 }
 
-.promo-sub-light { color: #e8f0f8; }
+.promo-sub-light { font-size: 15px; color: #e8f0f8; }
 
 .promo-price-line {
-  font-family: var(--font);
-  font-size: 16px;
+  font-family: 'Poppins', var(--font);
+  font-size: 20px;
   color: #ffffff;
   margin: 4px 0;
 }
@@ -678,11 +695,11 @@ a      { text-decoration: none; color: inherit; }
 .promo-price {
   font-size: 22px;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--go); /* green — matches Figma "39 $" */
 }
 
 .promo-mrp strong {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   color: #ffffff;
 }
@@ -710,7 +727,7 @@ a      { text-decoration: none; color: inherit; }
 /* ══════════════════════════════
    SECTION HEADER
 ═══════════════════════════════ */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 .section-header {
   display: flex;
