@@ -492,11 +492,84 @@ a      { text-decoration: none; color: inherit; }
 .grid-card-btn img { height: 100%; width: 100%; object-fit: contain; }
 .grid-card-cap { margin-top: 6px; padding: 0 2px; font-size: 11px; line-height: 1.4; color: var(--soft); overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 
-/* Brand panels row */
-.brands-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-@media (min-width: 768px) { .brands-row { grid-template-columns: repeat(4, 1fr); } }
-.brand-panel h3 { margin-bottom: 8px; font-size: 13px; font-weight: 600; text-align: center; color: var(--ink); }
-.brand-panel img { width: 100%; border-radius: var(--r-card); object-fit: cover; }
+/* Override grid gap for related/tv rows — Figma gap=45, padding-top=52 */
+#row-a-grid,
+#row-tv-grid,
+#row-phones-grid,
+#row-cables-grid {
+  gap: 45px;
+  padding-top: 52px;
+}
+
+/* Brand panels row — Shop by Brands */
+.brands-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  padding: 0;
+}
+@media (min-width: 768px) {
+  .brands-row {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 48px;
+    padding: 90px 0 0;
+  }
+}
+
+.brand-panel {
+  display: flex;
+  flex-direction: column;
+  border: 0.5px solid #000000;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.brand-panel-title {
+  font-family: 'Poppins', var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--ink);
+  padding: 10px 0;
+  border-bottom: 0.5px solid #000000;
+  background: var(--paper);
+}
+
+.brand-logo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  flex: 1;
+}
+
+.brand-logo-box {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.46px solid #000000;
+  box-sizing: border-box;
+  background: var(--paper);
+  padding: 14px;
+}
+
+.brand-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.brand-logo-fallback {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.3px;
+  text-align: center;
+}
 
 /* Promo row */
 .promo-row { display: grid; grid-template-columns: 1fr; gap: 14px; }

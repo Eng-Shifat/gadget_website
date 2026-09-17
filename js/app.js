@@ -39,10 +39,30 @@ const PRODUCTS = [
 ];
 
 const BRAND_PANELS = [
-  { title:"Music",       image:"img/brands/brands-music.jpg" },
-  { title:"Storage",     image:"img/brands/brands-storage.jpg" },
-  { title:"Laptops",     image:"img/brands/brands-laptops.jpg" },
-  { title:"Televisions", image:"img/brands/brands-tv.jpg" },
+  { title:"Music",       brands:[
+    { name:"JBL",        img:"img/brands/brand-jbl.png" },
+    { name:"Bose",       img:"img/brands/brand-bose.png" },
+    { name:"Sennheiser", img:"img/brands/brand-sennheiser.png" },
+    { name:"Yamaha",     img:"img/brands/brand-yamaha.png" },
+  ]},
+  { title:"Storage",     brands:[
+    { name:"Kingston",   img:"img/brands/brand-kingston.png" },
+    { name:"Corsair",    img:"img/brands/brand-corsair.png" },
+    { name:"Zebronics",  img:"img/brands/brand-zebronics.png" },
+    { name:"SanDisk",    img:"img/brands/brand-sandisk.png" },
+  ]},
+  { title:"Laptops",     brands:[
+    { name:"HP",         img:"img/brands/brand-hp.png" },
+    { name:"Dell",       img:"img/brands/brand-dell.png" },
+    { name:"Lenovo",     img:"img/brands/brand-lenovo.png" },
+    { name:"Apple",      img:"img/brands/brand-apple.png" },
+  ]},
+  { title:"Televisions", brands:[
+    { name:"Sony",       img:"img/brands/brand-sony.png" },
+    { name:"LG",         img:"img/brands/brand-lg.png" },
+    { name:"Samsung",    img:"img/brands/brand-samsung.png" },
+    { name:"TCL",        img:"img/brands/brand-tcl.png" },
+  ]},
 ];
 
 // ══════════════════════════════
@@ -230,10 +250,23 @@ function gridCardHTML(p, caption = false) {
 }
 
 function brandPanelHTML(b) {
+  const logos = b.brands.map(brand => `
+    <div class="brand-logo-box">
+      <img 
+        src="${brand.img}" 
+        alt="${brand.name}" 
+        class="brand-logo-img"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        onload="this.nextElementSibling.style.display='none';"
+      />
+      <span class="brand-logo-fallback" style="display:flex;">${brand.name}</span>
+    </div>`).join("");
   return `
     <div class="brand-panel">
-      <h3>${b.title}</h3>
-      <img src="${b.image}" alt="${b.title}" />
+      <p class="brand-panel-title">${b.title}</p>
+      <div class="brand-logo-grid">
+        ${logos}
+      </div>
     </div>`;
 }
 
