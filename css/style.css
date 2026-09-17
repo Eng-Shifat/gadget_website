@@ -497,7 +497,7 @@ a      { text-decoration: none; color: inherit; }
 #row-tv-grid,
 #row-phones-grid,
 #row-cables-grid {
-  padding-top: 52px;
+  padding-top: 0;
 }
 #row-a-grid      { gap: 30px; } /* Your Releated items.. — Figma spacing 30 */
 #row-tv-grid     { gap: 0; }    /* Televisons — Figma spacing -2 (~0) */
@@ -586,7 +586,7 @@ a      { text-decoration: none; color: inherit; }
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
-  padding-top: 82px;
+  padding-top: 0;
 }
 @media (min-width: 768px) {
   .promo-row { grid-template-columns: repeat(2, 1fr); gap: 10px; }
