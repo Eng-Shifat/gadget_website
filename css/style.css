@@ -506,22 +506,19 @@ a      { text-decoration: none; color: inherit; }
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-  padding: 0;
+  margin-top: 12px;
 }
 @media (min-width: 768px) {
   .brands-row {
     grid-template-columns: repeat(4, 1fr);
     gap: 48px;
-    padding: 90px 0 0;
   }
 }
 
 .brand-panel {
   display: flex;
   flex-direction: column;
-  border: 0.5px solid #000000;
-  border-radius: 0;
-  overflow: hidden;
+  gap: 0;
 }
 
 .brand-panel-title {
@@ -529,16 +526,21 @@ a      { text-decoration: none; color: inherit; }
   font-size: 13px;
   font-weight: 600;
   text-align: center;
-  color: var(--ink);
-  padding: 10px 0;
-  border-bottom: 0.5px solid #000000;
-  background: var(--paper);
+  color: #000000;
+  padding: 0 0 10px 0;
+  background: transparent;
+  border: none;
 }
 
 .brand-logo-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  flex: 1;
+  gap: 8px;
+  padding: 12px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
 }
 
 .brand-logo-box {
@@ -546,10 +548,16 @@ a      { text-decoration: none; color: inherit; }
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 0.46px solid #000000;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
   box-sizing: border-box;
-  background: var(--paper);
-  padding: 14px;
+  background: #ffffff;
+  padding: 12px;
+  transition: background .15s, box-shadow .15s;
+}
+.brand-logo-box:hover {
+  background: #f9f9f9;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
 }
 
 .brand-logo-img {
@@ -560,22 +568,141 @@ a      { text-decoration: none; color: inherit; }
 }
 
 .brand-logo-fallback {
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
-  color: var(--ink);
-  letter-spacing: -0.3px;
+  color: #000000;
   text-align: center;
 }
 
 /* Promo row */
-.promo-row { display: grid; grid-template-columns: 1fr; gap: 14px; }
-@media (min-width: 768px) { .promo-row { grid-template-columns: repeat(2, 1fr); } }
-.promo-btn { display: block; width: 100%; border-radius: 8px; overflow: hidden; }
-.promo-btn img { width: 100%; object-fit: cover; }
+.promo-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding-top: 82px;
+}
+@media (min-width: 768px) {
+  .promo-row { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+}
+
+.promo-btn {
+  display: block;
+  width: 100%;
+  height: 384.13px;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  text-align: left;
+}
+@media (max-width: 767px) { .promo-btn { height: 220px; } }
+
+/* boAt — dark black bg */
+.promo-boat { background: #111111; }
+
+/* AirPods — blue bg */
+.promo-airpods { background: #58A0E2; }
+
+.promo-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 4px;
+}
+
+.promo-content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+}
+
+.promo-content-right {
+  justify-content: flex-start;
+}
+
+.promo-text-group {
+  width: 383px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+@media (max-width: 767px) { .promo-text-group { width: 100%; padding: 16px; } }
+
+.promo-title {
+  font-family: var(--font);
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.promo-title-light {
+  font-size: 32px;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.promo-title-light strong { font-weight: 700; }
+
+.promo-sub {
+  font-family: var(--font);
+  font-size: 14px;
+  color: #cccccc;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.promo-sub-light { color: #e8f0f8; }
+
+.promo-price-line {
+  font-family: var(--font);
+  font-size: 16px;
+  color: #ffffff;
+  margin: 4px 0;
+}
+
+.promo-price {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.promo-mrp strong {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.promo-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  padding: 0 18px;
+  background: var(--go);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  border-radius: 4px;
+  font-family: var(--font);
+  margin-top: 8px;
+  width: fit-content;
+}
 
 /* Results label */
 .results-label { margin-bottom: 14px; font-size: 13px; color: var(--soft); }

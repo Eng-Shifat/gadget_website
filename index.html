@@ -162,7 +162,10 @@
     </div>
     <div class="grid-4" id="row-tv-grid"></div>
 
-    <div class="brands-row mt-section" id="brand-panels"></div>
+    <div class="section-header mt-section">
+      <span class="section-title">Shop by Brands</span>
+    </div>
+    <div class="brands-row" id="brand-panels"></div>
 
     <div class="section-header mt-section">
       <span class="section-title">Headphones</span>
@@ -177,12 +180,33 @@
     <div class="grid-4" id="row-cables-grid"></div>
 
     <div class="promo-row mt-section" id="promo-banners">
-      <button class="promo-btn" onclick="openProduct('boat-900')">
-        <img src="img/promo/promo-boat.jpg" alt="boAt Bassheads 900" />
+
+      <!-- boAt Bassheads 900 banner -->
+      <button class="promo-btn promo-boat" onclick="openProduct('boat-900')">
+        <div class="promo-content">
+          <div class="promo-text-group">
+            <h2 class="promo-title">boAt Bassheads 900</h2>
+            <p class="promo-sub">Wired On Ear Headphones with Mic</p>
+            <p class="promo-price-line">at Just <strong class="promo-price">39 $</strong></p>
+            <span class="promo-cta">SHOP NOW</span>
+          </div>
+        </div>
+        <img src="img/promo/promo-boat.jpg" alt="boAt Bassheads 900" class="promo-img" onerror="this.style.display='none'" />
       </button>
-      <button class="promo-btn" onclick="openProduct('airpods-pro')">
-        <img src="img/promo/promo-airpods.jpg" alt="AirPods Pro" />
+
+      <!-- AirPods Pro banner -->
+      <button class="promo-btn promo-airpods" onclick="openProduct('airpods-pro')">
+        <div class="promo-content promo-content-right">
+          <div class="promo-text-group">
+            <h2 class="promo-title promo-title-light">AirPods <strong>Pro</strong></h2>
+            <p class="promo-sub promo-sub-light">From ₹3095.00/mo. Per Month<br>with EMI,<br>or</p>
+            <p class="promo-price-line promo-mrp"><strong>MRP $239.00</strong></p>
+            <p class="promo-sub promo-sub-light">(incl. of all taxes)</p>
+          </div>
+        </div>
+        <img src="img/promo/promo-airpods.jpg" alt="AirPods Pro" class="promo-img" onerror="this.style.display='none'" />
       </button>
+
     </div>
   </div>
 
