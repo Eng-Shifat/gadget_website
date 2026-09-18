@@ -512,9 +512,8 @@ a      { text-decoration: none; color: inherit; }
 .grid-4 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: 14px;
 }
-@media (min-width: 480px) { .grid-4 { gap: 14px; } }
 @media (min-width: 768px) { .grid-4 { grid-template-columns: repeat(4, 1fr); gap: 19px; } }
 
 /* Featured card (white bg, product info) */
@@ -640,7 +639,7 @@ a      { text-decoration: none; color: inherit; }
 }
 
 /* Per-row grid gaps — matched to Figma spacing */
-#featured-grid   { gap: 29px; } /* Today's Deal — Figma spacing 29 */
+#featured-grid   { gap: 14px; } /* Today's Deal — Figma spacing 29 */
 
 #row-a-grid,
 #row-tv-grid,
@@ -648,10 +647,17 @@ a      { text-decoration: none; color: inherit; }
 #row-cables-grid {
   padding-top: 0;
 }
-#row-a-grid      { gap: 30px; } /* Your Releated items.. — Figma spacing 30 */
-#row-tv-grid     { gap: 19px; } /* Televisons */
-#row-phones-grid { gap: 35px; } /* Headphones — Figma spacing 35 */
-#row-cables-grid { gap: 14px; } /* Accessories — Figma spacing 14 */
+#row-a-grid      { gap: 14px; }
+#row-tv-grid     { gap: 14px; }
+#row-phones-grid { gap: 14px; }
+#row-cables-grid { gap: 14px; }
+
+@media (min-width: 768px) {
+  #row-a-grid      { gap: 30px; }
+  #row-tv-grid     { gap: 19px; }
+  #row-phones-grid { gap: 35px; }
+  #row-cables-grid { gap: 14px; }
+}
 
 /* Brand panels row — Shop by Brands */
 .brands-row {
