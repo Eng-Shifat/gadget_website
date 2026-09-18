@@ -273,17 +273,23 @@
     position:fixed; width:280px; height:280px; border-radius:50%;
     background:radial-gradient(circle, rgba(99,102,241,0.10) 0%, transparent 70%);
     pointer-events:none; z-index:9999; transform:translate(-50%,-50%);
-    transition:opacity 0.3s ease; opacity:0;
+    transition:left 0.15s ease, top 0.15s ease, opacity 0.3s ease; opacity:0;
+    will-change:left,top;
   `;
   document.body.appendChild(glow);
-  let tx=0, ty=0, cx=0, cy=0;
-  document.addEventListener('mousemove', (e) => { tx=e.clientX; ty=e.clientY; glow.style.opacity='1'; }, { passive:true });
-  document.addEventListener('mouseleave', () => { glow.style.opacity='0'; });
-  (function loop() {
-    cx += (tx-cx)*0.12; cy += (ty-cy)*0.12;
-    glow.style.left=cx+'px'; glow.style.top=cy+'px';
-    requestAnimationFrame(loop);
-  })();
+  let ticking = false;
+  document.addEventListener('mousemove', (e) => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        glow.style.left = e.clientX + 'px';
+        glow.style.top  = e.clientY + 'px';
+        glow.style.opacity = '1';
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+  document.addEventListener('mouseleave', () => { glow.style.opacity = '0'; });
 })();
 
 

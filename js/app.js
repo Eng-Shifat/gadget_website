@@ -200,7 +200,7 @@ function renderCategoryNav() {
       <li class="cat-chip">
         <button class="cat-chip-btn${on ? " active" : ""}" onclick="toggleCategory('${c.id}')">
           <span class="cat-chip-label">${c.label}</span>
-          <img src="${c.img}" alt="${c.label}" class="cat-chip-img" />
+          <img src="${c.img}" alt="${c.label}" class="cat-chip-img" width="24" height="24" loading="lazy" />
         </button>
       </li>`;
   }).join("");
@@ -217,14 +217,14 @@ function toggleCategory(id) {
 // ══════════════════════════════
 function featuredCardHTML(p) {
   const thumbs = p.thumbs?.length
-    ? `<div class="card-thumbs">${p.thumbs.map(t=>`<img src="${t}" alt="" />`).join("")}</div>`
+    ? `<div class="card-thumbs">${p.thumbs.map(t=>`<img src="${t}" alt="" width="60" height="60" loading="lazy" />`).join("")}</div>`
     : "";
   const cont = p.continueShopping ? `<span class="continue-badge">Continue shopping …</span>` : "";
   return `
     <article class="featured-card">
       <button class="featured-card-btn" onclick="openProduct('${p.id}')">
         ${cont}
-        <img src="${p.image}" alt="${p.name}" />
+        <img src="${p.image}" alt="${p.name}" width="220" height="180" loading="lazy" />
       </button>
       <p class="card-name">${p.name}</p>
       <p class="card-sub">${p.subtitle}</p>
@@ -246,7 +246,7 @@ function gridCardHTML(p, caption = false) {
   return `
     <article class="grid-card">
       <button class="grid-card-btn" onclick="openProduct('${p.id}')">
-        <img src="${p.image}" alt="${p.name}" />
+        <img src="${p.image}" alt="${p.name}" width="180" height="160" loading="lazy" />
       </button>
       ${cap}
     </article>`;
@@ -259,6 +259,8 @@ function brandPanelHTML(b) {
         src="${brand.img}" 
         alt="${brand.name}" 
         class="brand-logo-img"
+        width="100" height="50"
+        loading="lazy"
         style="display:none;"
         onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
       />
