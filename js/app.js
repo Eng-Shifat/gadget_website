@@ -147,30 +147,13 @@ function openCart()  { toggle("cart-backdrop","cart-drawer", true); }
 function closeCart() { toggle("cart-backdrop","cart-drawer", false); }
 
 // ══════════════════════════════
-// PRODUCT MODAL
+// PRODUCT PAGE NAVIGATION
 // ══════════════════════════════
 function openProduct(id) {
-  const p = PRODUCTS.find(x => x.id === id);
-  if (!p) return;
-  activeProduct = p;
-  document.getElementById("modal-img").src = p.image;
-  document.getElementById("modal-img").alt = p.name;
-  document.getElementById("modal-name").textContent = p.name;
-  document.getElementById("modal-sub").textContent  = p.subtitle;
-  document.getElementById("modal-price").textContent = fmt(p.price);
-  document.getElementById("modal-mrp").textContent   = fmt(p.mrp);
-  toggle("modal-backdrop","product-modal", true);
+  window.location.href = "product.html?id=" + id;
 }
-function closeModal() {
-  activeProduct = null;
-  toggle("modal-backdrop","product-modal", false);
-}
-function addActiveToCart() {
-  if (!activeProduct) return;
-  cartAdd(activeProduct);
-  closeModal();
-  openCart();
-}
+function closeModal() {}
+function addActiveToCart() {}
 
 // ══════════════════════════════
 // HELPER: toggle backdrop + panel

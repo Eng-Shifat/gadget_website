@@ -309,25 +309,6 @@
     <button class="btn-checkout" id="btn-checkout" onclick="checkout()" disabled>Checkout</button>
   </div>
 </aside>
-
-<!-- ══════════════════════════════
-     PRODUCT MODAL
-═══════════════════════════════ -->
-<div class="backdrop" id="modal-backdrop" onclick="closeModal()"></div>
-<div class="product-modal" id="product-modal">
-  <button class="modal-close-btn" onclick="closeModal()" aria-label="Close">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-  </button>
-  <img id="modal-img" src="" alt="" />
-  <h3 id="modal-name"></h3>
-  <p id="modal-sub"></p>
-  <p class="modal-price-row">
-    <span id="modal-price" class="modal-price-val"></span>
-    <span id="modal-mrp" class="modal-mrp-val"></span>
-  </p>
-  <button class="btn-add-to-cart" onclick="addActiveToCart()">Add to cart</button>
-</div>
-
 <script src="js/app.js" defer></script>
 <script src="js/animations.js" defer></script>
 </body>
