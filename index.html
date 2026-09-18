@@ -70,7 +70,7 @@
   <div class="cat-nav-inner">
 
     <!-- "Categories" striped label -->
-    <div class="cat-stripe-wrap">
+    <div class="cat-stripe-wrap" id="cat-stripe-btn" style="cursor:pointer;">
       <div class="cat-stripe-bg"><span></span></div>
       <span class="cat-stripe-text">Categories</span>
     </div>
@@ -218,54 +218,73 @@
      FOOTER
 ═══════════════════════════════ -->
 <footer class="site-footer">
+
+  <!-- Top links grid -->
   <div class="footer-grid">
-    <div>
-      <h3>Know Us</h3>
-      <ul><li>About Us</li><li>Contact Us</li><li>Press</li><li>Careers</li><li>Elecxo Earn</li></ul>
+    <div class="footer-col">
+      <h3 class="footer-col-title">Company</h3>
+      <ul class="footer-col-list">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
     </div>
-    <div>
-      <h3>Policy</h3>
-      <ul><li>Security</li><li>Privacy</li><li>Term of use</li><li>Return policy</li><li>Compliance</li></ul>
+    <div class="footer-col">
+      <h3 class="footer-col-title">Support</h3>
+      <ul class="footer-col-list">
+        <li><a href="#">Help Centre</a></li>
+        <li><a href="#">Track Order</a></li>
+        <li><a href="#">Returns</a></li>
+        <li><a href="#">Warranty</a></li>
+      </ul>
     </div>
-    <div>
-      <h3>Help you</h3>
-      <ul><li>Return &amp; Cancelation</li><li>Membership</li><li>Payments</li><li>Account</li><li>Shipping</li></ul>
+    <div class="footer-col">
+      <h3 class="footer-col-title">Legal</h3>
+      <ul class="footer-col-list">
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Use</a></li>
+        <li><a href="#">Cookie Policy</a></li>
+      </ul>
     </div>
-    <div>
-      <h3>Social</h3>
+    <div class="footer-col">
+      <h3 class="footer-col-title">Contact</h3>
+      <ul class="footer-col-list footer-contact-list">
+        <li>01700-000000</li>
+        <li><a href="mailto:support@electrxo.com">support@electrxo.com</a></li>
+        <li>Dhaka, Bangladesh</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <div class="footer-divider"></div>
+
+  <!-- Bottom bar -->
+  <div class="footer-bottom">
+    <div class="footer-bottom-left">
+      <p class="footer-wordmark">Elec<span>Xo</span></p>
+      <p class="footer-copy">&copy; 2025 ElecXo. All rights reserved.</p>
       <div class="social-icons">
         <a href="#" aria-label="Facebook" class="social-icon">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
         </a>
         <a href="#" aria-label="Instagram" class="social-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-        </a>
-        <a href="#" aria-label="Twitter / X" class="social-icon">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
         </a>
         <a href="#" aria-label="YouTube" class="social-icon">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
         </a>
       </div>
-      <div class="footer-mail-inline">
-        <p class="footer-label-text">Mail Us</p>
-        <p>elecxo@info.com</p>
-        <p>elecxoindia@info.in</p>
-      </div>
     </div>
+
   </div>
-  <div class="footer-bottom">
-    <p class="footer-wordmark">Elec<span>XO</span></p>
-    <div class="footer-contact">
-      <p class="footer-label-text">Contact us</p>
-      <p>B-11 D.S.I.D.C Complex, F.I.E</p>
-      <p>patparganj Industrial Area,</p>
-      <p>New Delhi, Delhi 110092 · 011 4242 0976</p>
-    </div>
-  </div>
+
+  <!-- Crafted by -->
   <div class="footer-dev">
     <p>Developed by <span>Yeasin Kabir Shifat</span></p>
   </div>
+
 </footer>
 
 <!-- ══════════════════════════════
@@ -308,5 +327,6 @@
 </div>
 
 <script src="js/app.js"></script>
+<script src="js/animations.js"></script>
 </body>
 </html>
