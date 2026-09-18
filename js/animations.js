@@ -11,8 +11,7 @@
     const y = window.scrollY;
     if (y > 10) header.classList.add('scrolled');
     else header.classList.remove('scrolled');
-    if (y > lastY + 5 && y > 80) header.style.transform = 'translateY(-100%)';
-    else if (y < lastY - 5 || y < 80) header.style.transform = 'translateY(0)';
+    header.style.transform = 'translateY(0)';
     lastY = y;
   }, { passive: true });
 })();
@@ -214,6 +213,7 @@
   if (_openProduct && modal) {
     window.openProduct = function(id) {
       _openProduct(id);
+      document.body.style.overflow = 'hidden';
       modal.style.transition = 'none';
       modal.style.transform = 'translateX(-50%) translateY(-50%) scale(0.88)';
       modal.style.opacity = '0';
@@ -226,6 +226,7 @@
   }
   if (_closeModal && modal) {
     window.closeModal = function() {
+      document.body.style.overflow = '';
       modal.style.transition = 'transform 0.25s ease, opacity 0.25s ease';
       modal.style.transform = 'translateX(-50%) translateY(-50%) scale(0.92)';
       modal.style.opacity = '0';
@@ -384,10 +385,11 @@
       will-change: transform;
     }
     #site-header.scrolled {
-      background: rgba(255,255,255,0.85) !important;
-      backdrop-filter: blur(16px) !important;
-      -webkit-backdrop-filter: blur(16px) !important;
-      box-shadow: 0 2px 24px rgba(0,0,0,0.10) !important;
+      background: rgba(255, 255, 255, 0.15) !important;
+      backdrop-filter: blur(24px) saturate(200%) !important;
+      -webkit-backdrop-filter: blur(24px) saturate(200%) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.25) !important;
+      box-shadow: 0 4px 32px rgba(0, 0, 0, 0.08) !important;
     }
     .cart-badge-pop { animation: elecxo-pulse-badge 0.4s ease; }
 
