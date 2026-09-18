@@ -651,9 +651,9 @@ a      { text-decoration: none; color: inherit; }
 #row-cables-grid {
   padding-top: 0;
 }
-#row-a-grid      { gap: 30px; } /* Your Releated items.. — Figma spacing 30 */
-#row-tv-grid     { gap: 19px; } /* Televisons */
-#row-phones-grid { gap: 35px; } /* Headphones — Figma spacing 35 */
+#row-a-grid      { gap: 14px; } /* Your Releated items.. — Figma spacing 30 */
+#row-tv-grid     { gap: 14px; } /* Televisons */
+#row-phones-grid { gap: 14px; } /* Headphones — Figma spacing 35 */
 #row-cables-grid { gap: 14px; } /* Accessories — Figma spacing 14 */
 
 /* Brand panels row — Shop by Brands */
