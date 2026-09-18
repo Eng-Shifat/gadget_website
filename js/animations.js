@@ -148,6 +148,7 @@
     card.style.boxShadow = `${x * -10}px ${y * -10}px 30px rgba(0,0,0,0.12)`;
   });
   document.addEventListener('mouseleave', (e) => {
+    if (!e.target || typeof e.target.closest !== 'function') return;
     const card = e.target.closest('.featured-card, .grid-card');
     if (!card) return;
     card.style.transform = '';
