@@ -382,9 +382,10 @@
     .pd-tabs-section {
       max-width: 1160px;
       margin: 0 auto;
-      padding: 0 20px 52px;
+      padding: 0 20px 48px;
       border-top: 1px solid #f1f3f5;
     }
+    @media (min-width: 768px) { .pd-tabs-section { padding: 0 24px 56px; } }
     .pd-tabs {
       display: flex;
       gap: 0;
@@ -443,6 +444,48 @@
       max-width: 1160px;
       margin: 0 auto;
       padding: 0 20px 60px;
+    }
+
+    /* Product Info Table (in info panel) */
+    .pd-info-table-wrap {
+      margin-bottom: 16px;
+    }
+    .pd-info-table-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1e293b;
+      margin: 0 0 10px;
+      letter-spacing: .01em;
+    }
+    .pd-info-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid #f1f3f5;
+    }
+    .pd-info-table tr:nth-child(even) td { background: #fafafa; }
+    .pd-info-table td {
+      padding: 9px 13px;
+      border-bottom: 1px solid #f1f3f5;
+      color: #374151;
+      line-height: 1.5;
+    }
+    .pd-info-table tr:last-child td { border-bottom: none; }
+    .pd-info-table td:first-child {
+      font-weight: 600;
+      color: #1e293b;
+      width: 40%;
+      background: #f8f9fb;
+    }
+    .pd-info-table tr:nth-child(even) td:first-child { background: #f3f4f6; }
+
+    /* Tabs inside grid — full width */
+    .pd-tabs-section-inner {
+      grid-column: 1 / -1;
+      border-top: 1px solid #f1f3f5;
+      padding-top: 8px;
     }
 
     /* ════════════════════════════
@@ -594,17 +637,31 @@
     </div>
 
   </div>
+  </div>
+
 </div>
 
 <!-- TABS -->
 <div class="pd-tabs-section">
   <div class="pd-tabs">
     <button class="pd-tab-btn active" onclick="switchTab('description', this)">Description</button>
+    <button class="pd-tab-btn" onclick="switchTab('product-info', this)">Product Info</button>
     <button class="pd-tab-btn" onclick="switchTab('reviews', this)">Reviews (0)</button>
   </div>
   <div class="pd-tab-panel active" id="tab-description">
     <div class="pd-desc-content" id="tab-desc-content">
       <p>Loading…</p>
+    </div>
+  </div>
+  <div class="pd-tab-panel" id="tab-product-info">
+    <div class="pd-info-table-wrap" style="max-width:600px;">
+      <table class="pd-info-table" id="pd-info-table-tab">
+        <tr><td>Model</td><td id="pi-model-tab">—</td></tr>
+        <tr><td>Category</td><td id="pi-category-tab">—</td></tr>
+        <tr><td>Warranty</td><td>Manufacturer warranty included</td></tr>
+        <tr><td>Delivery</td><td>Fast delivery across Bangladesh</td></tr>
+        <tr><td>Return Policy</td><td>7-day easy return</td></tr>
+      </table>
     </div>
   </div>
   <div class="pd-tab-panel" id="tab-reviews">
@@ -783,16 +840,13 @@ function loadProduct() {
   document.getElementById("pd-save").textContent  = "Save " + fmt(p.mrp - p.price);
   document.getElementById("pd-sku").textContent   = "SKU: ELX-" + p.id.toUpperCase().slice(0,6);
 
+  // Product Info table (in tab panel)
+  document.getElementById("pi-model-tab").textContent    = p.name;
+  document.getElementById("pi-category-tab").textContent = cat;
+
+  // Description tab — summary only
   document.getElementById("tab-desc-content").innerHTML =
-    `<table class="pd-desc-table">
-      <tr><td>Model</td><td>${p.name}</td></tr>
-      <tr><td>Category</td><td>${cat}</td></tr>
-      <tr><td>Price</td><td>${fmt(p.price)} <s style="color:#9ca3af">${fmt(p.mrp)}</s></td></tr>
-      <tr><td>Description</td><td>${p.subtitle}</td></tr>
-      <tr><td>Warranty</td><td>Manufacturer warranty included</td></tr>
-      <tr><td>Delivery</td><td>Fast delivery across Bangladesh</td></tr>
-      <tr><td>Return Policy</td><td>7-day easy return</td></tr>
-     </table>`;
+    `<p style="font-size:14px;color:#374151;line-height:1.85;">${p.subtitle}. This is a high-quality product from ElecXO, carefully selected for performance and value. Comes with manufacturer warranty and is eligible for 7-day easy return. Fast delivery available across Bangladesh.</p>`;
 
   const related = PRODUCTS.filter(x => x.category === p.category && x.id !== p.id).slice(0, 4);
   document.getElementById("related-grid").innerHTML = related.map(r =>
