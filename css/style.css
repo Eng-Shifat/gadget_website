@@ -264,7 +264,7 @@ a      { text-decoration: none; color: inherit; }
 .hero-section {
   max-width: 1400px;
   margin: 5px auto 0;
-  padding: 0 24px 32px;
+  padding: 0 24px 0;
 }
 
 .hero-inner {
@@ -433,7 +433,7 @@ a      { text-decoration: none; color: inherit; }
 .main-content {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 24px 80px;
+  padding: 0 24px 32px;
 }
 
 .mt-section { margin-top: 32px; }
@@ -454,7 +454,7 @@ a      { text-decoration: none; color: inherit; }
   border-radius: var(--r-card);
   padding: 12px;
   border: 0.5px solid #000000;
-  min-height: 315.94px;
+  min-height: 240px;
 }
 .featured-card-btn {
   position: relative;
@@ -462,9 +462,9 @@ a      { text-decoration: none; color: inherit; }
   flex: 1;
   align-items: center;
   justify-content: center;
-  min-height: 168.5px;
+  min-height: 120px;
 }
-.featured-card-btn img { max-height: 168.5px; width: 204.61px; object-fit: contain; border-radius: 0; }
+.featured-card-btn img { max-height: 120px; width: auto; object-fit: contain; border-radius: 0; }
 .continue-badge { position: absolute; top: 6px; left: 6px; font-size: 11px; color: var(--mute); }
 .card-name { margin-top: 8px; font-size: 12px; color: var(--mute); text-align: center; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 36px; }
 .card-sub  { font-size: 11px; color: var(--soft); text-align: center; margin-top: 2px; }
@@ -472,7 +472,7 @@ a      { text-decoration: none; color: inherit; }
 .card-price-val { color: var(--price); }
 .card-mrp-val   { color: var(--strike); text-decoration: line-through; font-weight: 400; }
 .card-thumbs { margin-top: 8px; display: flex; justify-content: center; gap: 6px; }
-.card-thumbs img { width: 70.57px; height: 64.17px; border-radius: 7.13px; border: 0.5px solid #000000; object-fit: contain; background: var(--paper); }
+.card-thumbs img { width: 56px; height: 50px; border-radius: 6px; border: 0.5px solid #000000; object-fit: contain; background: var(--paper); }
 
 /* Grid card (image only) */
 .grid-card { }
@@ -493,6 +493,8 @@ a      { text-decoration: none; color: inherit; }
 .grid-card-cap { margin-top: 6px; padding: 0 2px; font-size: 11px; line-height: 1.4; color: var(--soft); overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 
 /* Per-row grid gaps — matched to Figma spacing */
+#featured-grid   { gap: 29px; } /* Today's Deal — Figma spacing 29 */
+
 #row-a-grid,
 #row-tv-grid,
 #row-phones-grid,
@@ -581,36 +583,72 @@ a      { text-decoration: none; color: inherit; }
   text-align: center;
 }
 
-/* Promo row */
+/* ══════════════════════════════
+   PROMO BANNERS — Redesigned
+═══════════════════════════════ */
 .promo-row {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 10px;
+  gap: 16px;
   padding-top: 0;
 }
 @media (min-width: 768px) {
-  .promo-row { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .promo-row { grid-template-columns: repeat(2, 1fr); gap: 20px; }
 }
 
 .promo-btn {
   display: block;
   width: 100%;
-  height: 384.13px;
-  border-radius: 4px;
+  height: 320px;
+  border-radius: 16px;
   overflow: hidden;
   position: relative;
   cursor: pointer;
   border: none;
   padding: 0;
   text-align: left;
+  transition: transform .22s cubic-bezier(.4,0,.2,1), box-shadow .22s;
+  box-shadow: 0 4px 24px rgba(0,0,0,.13);
 }
-@media (max-width: 767px) { .promo-btn { height: 220px; } }
+.promo-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0,0,0,.22);
+}
+@media (max-width: 767px) { .promo-btn { height: 240px; border-radius: 12px; } }
 
-/* boAt — dark black bg */
-.promo-boat { background: #111111; }
+/* boAt — deep dark with subtle noise texture */
+.promo-boat {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1c1c1e 50%, #111111 100%);
+}
 
-/* AirPods — blue bg */
-.promo-airpods { background: #58A0E2; }
+/* AirPods — premium blue gradient */
+.promo-airpods {
+  background: linear-gradient(135deg, #1a6fc4 0%, #3a8fdf 45%, #58A0E2 100%);
+}
+
+/* Decorative glow orb — boAt */
+.promo-boat::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -40px;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(22,163,74,.18) 0%, transparent 70%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Decorative glow orb — AirPods */
+.promo-airpods::before {
+  content: '';
+  position: absolute;
+  bottom: -60px; left: -40px;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,.12) 0%, transparent 70%);
+  z-index: 1;
+  pointer-events: none;
+}
 
 .promo-img {
   position: absolute;
@@ -619,13 +657,10 @@ a      { text-decoration: none; color: inherit; }
   height: 100%;
   object-fit: cover;
   display: block;
-  border-radius: 4px;
+  border-radius: 16px;
 }
 
-/* AirPods image: portrait source (408×612) — don't stretch to fill the
-   whole box, or cover crops off the bun/shoulders. Instead, pin it to
-   the right at its natural aspect ratio (height = box height, width
-   auto) so the full photo shows, matching the Figma layer (W310 H383). */
+/* AirPods image pinned right */
 .promo-airpods .promo-img {
   left: auto;
   right: 0;
@@ -634,13 +669,18 @@ a      { text-decoration: none; color: inherit; }
   object-fit: cover;
 }
 
+/* Subtle dark overlay on boAt to improve text contrast */
+.promo-boat .promo-img {
+  opacity: .85;
+}
+
 .promo-content {
   position: absolute;
   inset: 0;
   z-index: 2;
   display: flex;
   align-items: center;
-  padding: 0 40px;
+  padding: 0 44px;
 }
 
 .promo-content-right {
@@ -648,58 +688,82 @@ a      { text-decoration: none; color: inherit; }
 }
 
 .promo-text-group {
-  width: 383px;
+  max-width: 320px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
-@media (max-width: 767px) { .promo-text-group { width: 100%; padding: 16px; } }
+@media (max-width: 767px) { .promo-text-group { max-width: 100%; padding: 20px; } }
+
+/* Tag chip above title */
+.promo-tag {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.18);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,.25);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: #ffffff;
+  text-transform: uppercase;
+  width: fit-content;
+}
 
 .promo-title {
   font-family: 'Poppins', var(--font);
-  font-size: 32px;
-  font-weight: 600; /* SemiBold — Figma spec */
+  font-size: 30px;
+  font-weight: 700;
   color: #ffffff;
   line-height: 1.1;
   margin: 0;
+  text-shadow: 0 2px 12px rgba(0,0,0,.3);
 }
 
 .promo-title-light {
   font-family: 'Poppins', var(--font);
-  font-size: 48px; /* Figma spec */
-  font-weight: 400;
+  font-size: 40px;
+  font-weight: 300;
   color: #ffffff;
   line-height: 1.1;
+  text-shadow: 0 2px 12px rgba(0,0,0,.15);
 }
 
-.promo-title-light strong { font-weight: 700; }
+.promo-title-light strong { font-weight: 800; }
 
 .promo-sub {
   font-family: 'Poppins', var(--font);
-  font-size: 16px;
-  color: #cccccc;
+  font-size: 13px;
+  color: rgba(255,255,255,.75);
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.55;
   margin: 0;
 }
 
-.promo-sub-light { font-size: 15px; color: #e8f0f8; }
+.promo-sub-light { font-size: 13px; color: rgba(232,240,248,.85); }
 
 .promo-price-line {
   font-family: 'Poppins', var(--font);
-  font-size: 20px;
+  font-size: 18px;
   color: #ffffff;
-  margin: 4px 0;
+  margin: 2px 0;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
 }
 
 .promo-price {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--go); /* green — matches Figma "39 $" */
+  font-size: 26px;
+  font-weight: 800;
+  color: #4ade80;
+  text-shadow: 0 0 20px rgba(74,222,128,.35);
 }
 
 .promo-mrp strong {
-  font-size: 15px;
+  font-size: 22px;
   font-weight: 700;
   color: #ffffff;
 }
@@ -708,17 +772,39 @@ a      { text-decoration: none; color: inherit; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 34px;
-  padding: 0 18px;
+  height: 40px;
+  padding: 0 24px;
   background: var(--go);
   color: #ffffff;
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: .06em;
-  border-radius: 4px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  border-radius: 8px;
   font-family: var(--font);
-  margin-top: 8px;
+  margin-top: 6px;
   width: fit-content;
+  box-shadow: 0 4px 14px rgba(22,163,74,.45);
+  transition: background .15s, box-shadow .15s, transform .15s;
+}
+.promo-btn:hover .promo-cta {
+  background: var(--go-dk);
+  box-shadow: 0 6px 20px rgba(22,163,74,.55);
+  transform: scale(1.04);
+}
+
+/* AirPods CTA — white style */
+.promo-airpods .promo-cta {
+  background: rgba(255,255,255,.2);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(255,255,255,.5);
+  box-shadow: 0 4px 14px rgba(0,0,0,.15);
+  color: #ffffff;
+}
+.promo-airpods .promo-btn:hover .promo-cta,
+.promo-airpods:hover .promo-cta {
+  background: rgba(255,255,255,.35);
+  box-shadow: 0 6px 20px rgba(0,0,0,.2);
 }
 
 /* Results label */
@@ -780,7 +866,7 @@ a      { text-decoration: none; color: inherit; }
 /* ══════════════════════════════
    FOOTER
 ═══════════════════════════════ */
-.site-footer { background: var(--ink); color: var(--paper); margin-top: 40px; }
+.site-footer { background: var(--ink); color: var(--paper); margin-top: 0; }
 .footer-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
