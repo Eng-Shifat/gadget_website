@@ -261,10 +261,9 @@ function brandPanelHTML(b) {
         class="brand-logo-img"
         width="100" height="50"
         loading="lazy"
-        style="display:none;"
-        onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
       />
-      <span class="brand-logo-fallback">${brand.name}</span>
+      <span class="brand-logo-fallback" style="display:none;">${brand.name}</span>
     </div>`).join("");
   return `
     <div class="brand-panel">
