@@ -311,5 +311,21 @@
 </aside>
 <script src="js/app.js" defer></script>
 <script src="js/animations.js" defer></script>
+
+<script>
+  // Auto-filter by ?cat= URL param — chip becomes active, products filter, scroll to results
+  window.addEventListener('load', function() {
+    const params = new URLSearchParams(window.location.search);
+    const cat = params.get('cat');
+    if (cat && typeof toggleCategory === 'function') {
+      toggleCategory(cat);
+      // Small delay so DOM renders first, then smooth scroll
+      setTimeout(function() {
+        const target = document.getElementById('home-section') || document.getElementById('featured-section');
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      }, 120);
+    }
+  });
+</script>
 </body>
 </html>

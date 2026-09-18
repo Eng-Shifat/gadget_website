@@ -14,21 +14,25 @@
     /* ════════════════════════════
        BREADCRUMB
     ════════════════════════════ */
-    .breadcrumb {
+    .breadcrumb-bar {
+      background: #f8f9fb;
+      border-bottom: 1px solid #ebebef;
+    }
+        .breadcrumb {
       max-width: 1160px;
       margin: 0 auto;
-      padding: 16px 20px 0;
-      font-size: 12.5px;
+      padding: 14px 20px;
+      font-size: 13.5px;
       color: #9ca3af;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       flex-wrap: wrap;
     }
-    .breadcrumb a { color: #9ca3af; text-decoration: none; transition: color .2s; }
+    .breadcrumb a { color: #6b7280; text-decoration: none; transition: color .2s; font-weight: 500; }
     .breadcrumb a:hover { color: #4f46e5; }
-    .breadcrumb-sep { color: #e5e7eb; font-size: 14px; }
-    .breadcrumb-current { color: #374151; font-weight: 500; }
+    .breadcrumb-sep { color: #d1d5db; font-size: 15px; }
+    .breadcrumb-current { color: #1e293b; font-weight: 600; }
 
     /* ════════════════════════════
        PRODUCT LAYOUT
@@ -36,13 +40,14 @@
     .product-page {
       max-width: 1160px;
       margin: 0 auto;
-      padding: 20px 20px 60px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 28px;
+      padding: 16px 16px 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
     @media (min-width: 768px) {
       .product-page {
+        display: grid;
         grid-template-columns: 1.1fr 1fr;
         gap: 52px;
         padding: 28px 24px 72px;
@@ -53,7 +58,9 @@
     /* ════════════════════════════
        GALLERY
     ════════════════════════════ */
-    .pd-gallery { position: sticky; top: 80px; }
+    .pd-gallery { position: static; width: 100%; }
+    @media (min-width: 768px) { .pd-gallery { position: sticky; top: 80px; width: auto; } }
+    .pd-info { width: 100%; min-width: 0; }
 
     .pd-main-img-wrap {
       border-radius: 20px;
@@ -508,6 +515,95 @@
     .pd-sticky-bar .pd-btn { flex: 1; padding: 13px 8px; font-size: 13.5px; border-radius: 10px; }
     body { padding-bottom: 0; }
     @media (max-width: 767px) { body { padding-bottom: 72px; } }
+
+    /* ════════════════════════════
+       CATEGORY NAV BAR
+    ════════════════════════════ */
+    .cat-nav {
+      background: #fff;
+      padding: 10px 0;
+      overflow: hidden;
+      border-bottom: 1px solid #f1f3f5;
+    }
+    .cat-nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .cat-nav-inner::-webkit-scrollbar { display: none; }
+    .cat-stripe-wrap {
+      position: relative;
+      flex-shrink: 0;
+      padding: 0 16px;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      height: 36px;
+      min-width: 130px;
+      background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+      box-shadow: 0 2px 8px rgba(0,0,0,.18);
+      cursor: pointer;
+      transition: box-shadow .18s, transform .15s;
+      text-decoration: none;
+    }
+    .cat-stripe-wrap:hover { box-shadow: 0 4px 16px rgba(0,0,0,.28); transform: translateY(-1px); }
+    .cat-stripe-bg {
+      display: flex; flex-direction: column; gap: 3.5px;
+      flex-shrink: 0; width: 16px; background: none;
+    }
+    .cat-stripe-bg::before, .cat-stripe-bg::after, .cat-stripe-bg span {
+      content: ''; display: block; height: 2px; border-radius: 2px; background: #fff;
+    }
+    .cat-stripe-bg::before { content: ''; width: 100%; }
+    .cat-stripe-bg::after  { content: ''; width: 75%; }
+    .cat-stripe-text {
+      font-size: 13px; font-weight: 600; color: #fff;
+      letter-spacing: .01em; white-space: nowrap;
+    }
+    .cat-list {
+      flex: 1; display: flex; align-items: center;
+      justify-content: space-between; gap: 6px;
+      flex-wrap: nowrap; padding: 0; margin: 0; list-style: none;
+    }
+    .cat-chip { flex: 1; display: flex; justify-content: center; }
+    .cat-chip-btn {
+      display: flex; flex-direction: row; align-items: center;
+      justify-content: space-between; gap: 6px;
+      height: 36px; width: 100%; padding: 0 8px 0 12px;
+      background: #fff; border: 1.5px solid #e5e7eb;
+      border-radius: 6px; cursor: pointer; white-space: nowrap;
+      box-shadow: 0 1px 3px rgba(0,0,0,.07);
+      transition: border-color .15s, box-shadow .15s;
+      text-decoration: none;
+    }
+    .cat-chip-btn:hover {
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 2px rgba(79,70,229,.15);
+    }
+    .cat-chip-img {
+      width: 36px; height: 36px; object-fit: contain;
+      pointer-events: none; filter: drop-shadow(0 1px 3px rgba(0,0,0,.15));
+      transition: transform .18s ease; flex-shrink: 0;
+    }
+    .cat-chip-btn:hover .cat-chip-img { transform: scale(1.08); }
+    .cat-chip-label {
+      font-size: 13px; font-weight: 600; color: #1e293b;
+      white-space: nowrap; flex: 1; text-align: left;
+    }
+    @media (max-width: 767px) {
+      .cat-nav-inner { padding: 0 12px; gap: 6px; }
+      .cat-stripe-wrap { min-width: 110px; padding: 0 12px; }
+      .cat-chip-label { font-size: 12px; }
+      .cat-chip-img { width: 28px; height: 28px; }
+    }
   </style>
 </head>
 <body>
@@ -536,14 +632,27 @@
   </div>
 </header>
 
-<!-- BREADCRUMB -->
-<nav class="breadcrumb">
-  <a href="index.html">Home</a>
-  <span class="breadcrumb-sep">/</span>
-  <span id="bc-category">Products</span>
-  <span class="breadcrumb-sep">/</span>
-  <span class="breadcrumb-current" id="bc-name">Loading…</span>
+<!-- CATEGORY NAV -->
+<nav class="cat-nav">
+  <div class="cat-nav-inner">
+    <a href="index.html" class="cat-stripe-wrap">
+      <div class="cat-stripe-bg"><span></span></div>
+      <span class="cat-stripe-text">Categories</span>
+    </a>
+    <ul class="cat-list" id="cat-list-prd"></ul>
+  </div>
 </nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar">
+  <nav class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="#" id="bc-category-link">Products</a>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current" id="bc-name">Loading…</span>
+  </nav>
+</div>
 
 <!-- PRODUCT PAGE -->
 <div class="product-page">
@@ -816,7 +925,7 @@ function loadProduct() {
   document.title = p.name + " — ElecXO";
 
   const cat = p.category.charAt(0).toUpperCase() + p.category.slice(1);
-  document.getElementById("bc-category").textContent = cat;
+  document.getElementById("bc-category-link").textContent = cat;
   document.getElementById("bc-name").textContent = p.name;
 
   const mainImg = document.getElementById("pd-main-img");
@@ -867,6 +976,46 @@ document.addEventListener("DOMContentLoaded", () => {
   if (typeof PRODUCTS !== "undefined") loadProduct();
   else setTimeout(loadProduct, 150);
 });
+
+  // Category nav bar — same behavior as index.html
+  (function() {
+    const CATS = [
+      { id:"laptops",     label:"Laptops",       img:"img/chips/chip-laptops.png" },
+      { id:"camera",      label:"Camera",         img:"img/chips/chip-camera.png" },
+      { id:"accessories", label:"Accessories",    img:"img/chips/chip-acc.png" },
+      { id:"tv",          label:"TV",             img:"img/chips/chip-tv.png" },
+      { id:"headphones",  label:"Headphones",     img:"img/chips/chip-hp.png" },
+      { id:"storage",     label:"Storage",        img:"img/chips/chip-storage.png" },
+      { id:"hometheater", label:"Home Theater",   img:"img/chips/chip-ht.png" },
+    ];
+
+    let activeCat = null;
+
+    function renderPrdCatNav() {
+      const list = document.getElementById("cat-list-prd");
+      if (!list) return;
+      list.innerHTML = CATS.map(c =>
+        `<li class="cat-chip">
+           <button class="cat-chip-btn${activeCat === c.id ? ' active' : ''}" onclick="selectPrdCat('${c.id}')">
+             <span class="cat-chip-label">${c.label}</span>
+             <img src="${c.img}" alt="${c.label}" class="cat-chip-img" width="28" height="28" loading="lazy" />
+           </button>
+         </li>`
+      ).join('');
+    }
+
+    window.selectPrdCat = function(id) {
+      activeCat = (activeCat === id) ? null : id;
+      renderPrdCatNav();
+      // Navigate after brief active animation (same feel as index toggle)
+      setTimeout(function() {
+        window.location.href = 'index.html?cat=' + id;
+      }, 180);
+    };
+
+    renderPrdCatNav();
+  })();
+
 </script>
 </body>
 </html>
