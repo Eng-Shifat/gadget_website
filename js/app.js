@@ -238,7 +238,10 @@ function featuredCardHTML(p) {
 
 function gridCardHTML(p, caption = false) {
   const cap = caption
-    ? `<p class="grid-card-cap">${p.name}<br/>${p.subtitle}</p>`
+    ? `<div class="grid-card-cap">
+        <p class="grid-card-name">${p.name}</p>
+        <p class="grid-card-sub">${p.subtitle}</p>
+       </div>`
     : "";
   return `
     <article class="grid-card">
